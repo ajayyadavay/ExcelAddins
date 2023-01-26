@@ -1,0 +1,346 @@
+Public Function Num2EnglishWorday(Number As Double) As String
+Dim Int_num1 As Double
+Dim num_divided As Double
+
+Dim Decimalplace As Double
+Dim Tens As Double
+Dim Hundred As Double
+Dim Thousand As Double
+Dim Lakh As Double
+Dim Crore As Double
+Dim Arab As Double
+Dim Kharab As Double
+
+Dim sDecimalplace As String
+Dim sTens As String
+Dim sHundred As String
+Dim sThousand As String
+Dim sLakh As String
+Dim sCrore As String
+Dim sArab As String
+Dim sKharab As String
+
+Dim sDecimalplace1 As String
+Dim sTens1 As String
+Dim sHundred1 As String
+Dim sThousand1 As String
+Dim sLakh1 As String
+Dim sCrore1 As String
+Dim sArab1 As String
+Dim sKharab1 As String
+
+Int_num1 = CDbl(Int(Number))
+Decimalplace = Round((Number - Int_num1) * 100, 0)
+sDecimalplace = EnglishWordOfNumber(Decimalplace)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Tens = Round((num_divided - Int_num1) * 100, 0)
+sTens = EnglishWordOfNumber(Tens)
+
+num_divided = Int_num1 / 10
+Int_num1 = CDbl(Int(num_divided))
+Hundred = Round((num_divided - Int_num1) * 10, 0)
+sHundred = EnglishWordOfNumber(Hundred)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Thousand = Round((num_divided - Int_num1) * 100, 0)
+sThousand = EnglishWordOfNumber(Thousand)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Lakh = Round((num_divided - Int_num1) * 100, 0)
+sLakh = EnglishWordOfNumber(Lakh)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Crore = Round((num_divided - Int_num1) * 100, 0)
+sCrore = EnglishWordOfNumber(Crore)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Arab = Round((num_divided - Int_num1) * 100, 0)
+sArab = EnglishWordOfNumber(Arab)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Kharab = Round((num_divided - Int_num1) * 100, 0)
+sKharab = EnglishWordOfNumber(Kharab)
+
+If sKharab = "" Then
+sKharab1 = ""
+Else
+sKharab1 = " " + sKharab + " Kharab"
+End If
+
+If sArab = "" Then
+sArab1 = ""
+Else
+sArab1 = " " + sArab + " Arab"
+End If
+
+If sCrore = "" Then
+sCrore1 = ""
+Else
+sCrore1 = " " + sCrore + " Crore"
+End If
+
+If sLakh = "" Then
+sLakh1 = ""
+Else
+sLakh1 = " " + sLakh + " Lakh"
+End If
+
+If sThousand = "" Then
+sThousand1 = ""
+Else
+sThousand1 = " " + sThousand + " Thousand"
+End If
+
+If sHundred = "" Then
+sHundred1 = ""
+Else
+sHundred1 = " " + sHundred + " Hundred"
+End If
+
+If sTens = "" Then
+sTens1 = ""
+Else
+sTens1 = " " + sTens + " Rupees"
+End If
+
+If sDecimalplace = "" Then
+sDecimalplace1 = ""
+Else
+sDecimalplace1 = " " + sDecimalplace + " Paisa"
+End If
+
+
+Num2EnglishWorday = sKharab1 + sArab1 + sCrore1 + sLakh1 + sThousand1 + sHundred1 + sTens1 + sDecimalplace1 + " only"
+
+End Function
+
+Public Function EnglishWordOfNumber(Number As Double) As String
+
+Select Case Number
+Case 1
+EnglishWordOfNumber = "One"
+Case 2
+EnglishWordOfNumber = "Two"
+Case 3
+EnglishWordOfNumber = "Three"
+Case 4
+EnglishWordOfNumber = "Four"
+Case 5
+EnglishWordOfNumber = "Five"
+Case 6
+EnglishWordOfNumber = "Six"
+Case 7
+EnglishWordOfNumber = "Seven"
+Case 8
+EnglishWordOfNumber = "Eight"
+Case 9
+EnglishWordOfNumber = "Nine"
+Case 10
+EnglishWordOfNumber = "Ten"
+Case 11
+EnglishWordOfNumber = "Eleven"
+Case 12
+EnglishWordOfNumber = "Twleve"
+
+Case 13
+EnglishWordOfNumber = "Thirteen"
+Case 14
+EnglishWordOfNumber = "Fourteen"
+Case 15
+EnglishWordOfNumber = "Fifteen"
+Case 16
+EnglishWordOfNumber = "Sixteen"
+Case 17
+EnglishWordOfNumber = "Seventeen"
+Case 18
+EnglishWordOfNumber = "Eighteen"
+Case 19
+EnglishWordOfNumber = "Nineteen"
+Case 20
+EnglishWordOfNumber = "Twenty"
+
+Case 21
+EnglishWordOfNumber = "Twenty one"
+Case 22
+EnglishWordOfNumber = "Twenty two"
+Case 23
+EnglishWordOfNumber = "Twenty three"
+Case 24
+EnglishWordOfNumber = "Twenty Four"
+Case 25
+EnglishWordOfNumber = "Twenty Five"
+Case 26
+EnglishWordOfNumber = "Twenty Six"
+Case 27
+EnglishWordOfNumber = "Twenty Seven"
+Case 28
+EnglishWordOfNumber = "Twenty Eight"
+Case 29
+EnglishWordOfNumber = "Twenty Nine"
+Case 30
+EnglishWordOfNumber = "Thirty"
+
+Case 31
+EnglishWordOfNumber = "Thirty one"
+Case 32
+EnglishWordOfNumber = "Thirty two"
+Case 33
+EnglishWordOfNumber = "Thirty three"
+Case 34
+EnglishWordOfNumber = "Thirty Four"
+Case 35
+EnglishWordOfNumber = "Thirty Five"
+Case 36
+EnglishWordOfNumber = "Thirty Six"
+Case 37
+EnglishWordOfNumber = "Thirty Seven"
+Case 38
+EnglishWordOfNumber = "Thirty Eight"
+Case 39
+EnglishWordOfNumber = "Thirty Nine"
+Case 40
+EnglishWordOfNumber = "Forty"
+
+Case 41
+EnglishWordOfNumber = "Forty one"
+Case 42
+EnglishWordOfNumber = "Forty two"
+Case 43
+EnglishWordOfNumber = "Forty three"
+Case 44
+EnglishWordOfNumber = "Forty  Four"
+Case 45
+EnglishWordOfNumber = "Forty Five"
+Case 46
+EnglishWordOfNumber = "Forty  Six"
+Case 47
+EnglishWordOfNumber = "Forty Seven"
+Case 48
+EnglishWordOfNumber = "Forty Eight"
+Case 49
+EnglishWordOfNumber = "Forty Nine"
+Case 50
+EnglishWordOfNumber = "Fifty"
+
+Case 51
+EnglishWordOfNumber = "Fifty one"
+Case 52
+EnglishWordOfNumber = "Fifty two"
+Case 53
+EnglishWordOfNumber = "Fifty  three"
+Case 54
+EnglishWordOfNumber = "Fifty  Four"
+Case 55
+EnglishWordOfNumber = "Fifty  Five"
+Case 56
+EnglishWordOfNumber = "Fifty  Six"
+Case 57
+EnglishWordOfNumber = "Fifty Seven"
+Case 58
+EnglishWordOfNumber = "Fifty Eight"
+Case 59
+EnglishWordOfNumber = "Fifty  Nine"
+Case 60
+EnglishWordOfNumber = "Sixty"
+
+Case 61
+EnglishWordOfNumber = "Sixty one"
+Case 62
+EnglishWordOfNumber = "Sixty two"
+Case 63
+EnglishWordOfNumber = "Sixty  three"
+Case 64
+EnglishWordOfNumber = "Sixty  Four"
+Case 65
+EnglishWordOfNumber = "Sixty  Five"
+Case 66
+EnglishWordOfNumber = "Sixty  Six"
+Case 67
+EnglishWordOfNumber = "Sixty Seven"
+Case 68
+EnglishWordOfNumber = "Sixty Eight"
+Case 69
+EnglishWordOfNumber = "Sixty  Nine"
+Case 70
+EnglishWordOfNumber = "Seventy"
+
+Case 71
+EnglishWordOfNumber = "Seventy one"
+Case 72
+EnglishWordOfNumber = "Seventy two"
+Case 73
+EnglishWordOfNumber = "Seventy  three"
+Case 74
+EnglishWordOfNumber = "Seventy  Four"
+Case 75
+EnglishWordOfNumber = "Seventy  Five"
+Case 76
+EnglishWordOfNumber = "Seventy  Six"
+Case 77
+EnglishWordOfNumber = "Seventy Seven"
+Case 78
+EnglishWordOfNumber = "Seventy Eight"
+Case 79
+EnglishWordOfNumber = "Seventy  Nine"
+Case 80
+EnglishWordOfNumber = "Eighty"
+
+Case 81
+EnglishWordOfNumber = "Eighty one"
+Case 82
+EnglishWordOfNumber = "Eighty two"
+Case 83
+EnglishWordOfNumber = "Eighty  three"
+Case 84
+EnglishWordOfNumber = "Eighty  Four"
+Case 85
+EnglishWordOfNumber = "Eighty  Five"
+Case 86
+EnglishWordOfNumber = "Eighty  Six"
+Case 87
+EnglishWordOfNumber = "Eighty Seven"
+Case 88
+EnglishWordOfNumber = "Eighty Eight"
+Case 89
+EnglishWordOfNumber = "Eighty  Nine"
+Case 90
+EnglishWordOfNumber = "Ninety"
+
+Case 91
+EnglishWordOfNumber = "Ninety one"
+Case 92
+EnglishWordOfNumber = "Ninety two"
+Case 93
+EnglishWordOfNumber = "Ninety  three"
+Case 94
+EnglishWordOfNumber = "Ninety  Four"
+Case 95
+EnglishWordOfNumber = "Ninety  Five"
+Case 96
+EnglishWordOfNumber = "Ninety  Six"
+Case 97
+EnglishWordOfNumber = "Ninety Seven"
+Case 98
+EnglishWordOfNumber = "Ninety Eight"
+Case 99
+EnglishWordOfNumber = "Ninety  Nine"
+Case 100
+EnglishWordOfNumber = "Hundred"
+
+Case Default
+EnglishWordOfNumber = ""
+
+End Select
+
+End Function
+
+
+
+
