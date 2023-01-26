@@ -1,0 +1,363 @@
+Public Function Num2NepaliWorday(Number As Double) As String
+Dim Int_num1 As Double
+Dim num_divided As Double
+
+Dim Decimalplace As Double
+Dim Tens As Double
+Dim Hundred As Double
+Dim Thousand As Double
+Dim Lakh As Double
+Dim Crore As Double
+Dim Arab As Double
+Dim Kharab As Double
+
+Dim sDecimalplace As String
+Dim sTens As String
+Dim sHundred As String
+Dim sThousand As String
+Dim sLakh As String
+Dim sCrore As String
+Dim sArab As String
+Dim sKharab As String
+
+Dim sDecimalplace1 As String
+Dim sTens1 As String
+Dim sHundred1 As String
+Dim sThousand1 As String
+Dim sLakh1 As String
+Dim sCrore1 As String
+Dim sArab1 As String
+Dim sKharab1 As String
+
+'Set NepwordDBFile = Workbooks.Open("NepWord.xlsx")
+'Set NepwordDBFile = Workbooks.Open("C:\Users\User\OneDrive\Desktop\VBA\Source.xlsx")
+'Workbooks.Open "NepWord.xlsx"
+'Workbooks.Open "E:\NepWord.xlsx"
+
+Int_num1 = CDbl(Int(Number))
+Decimalplace = Round((Number - Int_num1) * 100, 0)
+sDecimalplace = NepaliWordOfNumber(Decimalplace)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Tens = Round((num_divided - Int_num1) * 100, 0)
+sTens = NepaliWordOfNumber(Tens)
+
+num_divided = Int_num1 / 10
+Int_num1 = CDbl(Int(num_divided))
+Hundred = Round((num_divided - Int_num1) * 10, 0)
+sHundred = NepaliWordOfNumber(Hundred)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Thousand = Round((num_divided - Int_num1) * 100, 0)
+sThousand = NepaliWordOfNumber(Thousand)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Lakh = Round((num_divided - Int_num1) * 100, 0)
+sLakh = NepaliWordOfNumber(Lakh)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Crore = Round((num_divided - Int_num1) * 100, 0)
+sCrore = NepaliWordOfNumber(Crore)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Arab = Round((num_divided - Int_num1) * 100, 0)
+sArab = NepaliWordOfNumber(Arab)
+
+num_divided = Int_num1 / 100
+Int_num1 = CDbl(Int(num_divided))
+Kharab = Round((num_divided - Int_num1) * 100, 0)
+sKharab = NepaliWordOfNumber(Kharab)
+
+' close work book
+'NepwordDBFile.Close SaveChanges:=False
+'Application.ScreenUpdating = False
+
+If sKharab = "" Then
+sKharab1 = ""
+Else
+sKharab1 = " " + sKharab + " " + ChrW(&H916) + ChrW(&H930) + ChrW(&H94D) + ChrW(&H92C) 'Kharab
+End If
+
+If sArab = "" Then
+sArab1 = ""
+Else
+sArab1 = " " + sArab + " " + ChrW(&H905) + ChrW(&H930) + ChrW(&H94D) + ChrW(&H92C) 'Arab
+End If
+
+If sCrore = "" Then
+sCrore1 = ""
+Else
+sCrore1 = " " + sCrore + " " + ChrW(&H915) + ChrW(&H931) + ChrW(&H94B) + ChrW(&H921) 'Crore
+End If
+
+If sLakh = "" Then
+sLakh1 = ""
+Else
+sLakh1 = " " + sLakh + " " + ChrW(&H932) + ChrW(&H93E) + ChrW(&H916) 'Lakh
+End If
+
+If sThousand = "" Then
+sThousand1 = ""
+Else
+sThousand1 = " " + sThousand + " " + ChrW(&H939) + ChrW(&H91C) + ChrW(&H93E) + ChrW(&H930) 'Thousand
+End If
+
+If sHundred = "" Then
+sHundred1 = ""
+Else
+sHundred1 = " " + sHundred + " " + ChrW(&H938) + ChrW(&H92F) 'Hundred
+End If
+
+If sTens = "" Then
+sTens1 = ""
+Else
+sTens1 = " " + sTens + " " + ChrW(&H930) + ChrW(&H941) + ChrW(&H92A) + ChrW(&H948) + ChrW(&H92F) + ChrW(&H945) + ChrW(&H93E) 'Rupees
+End If
+
+If sDecimalplace = "" Then
+sDecimalplace1 = ""
+Else
+sDecimalplace1 = " " + sDecimalplace + " " + ChrW(&H92A) + ChrW(&H948) + ChrW(&H938) + ChrW(&H93E) 'Paisa
+End If
+
+
+
+Num2NepaliWorday = sKharab1 + sArab1 + sCrore1 + sLakh1 + sThousand1 + sHundred1 + sTens1 + sDecimalplace1 + " " + ChrW(&H92E) + ChrW(&H93E) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) 'Only
+
+End Function
+
+Public Function NepaliWordOfNumber(Number As Double) As String
+
+'Application.ScreenUpdating = False
+'Set NepwordDBFile = Workbooks.Open("E:\NepWord.xlsx")
+'Workbooks.Open "E:\NepWord.xlsx"
+
+Select Case Number
+Case 1
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915)
+Case 2
+NepaliWordOfNumber = ChrW(&H926) + ChrW(&H941) + ChrW(&H908)
+Case 3
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H940) + ChrW(&H928)
+Case 4
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H93E) + ChrW(&H930)
+Case 5
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H945) + ChrW(&H93E) + ChrW(&H91A)
+Case 6
+NepaliWordOfNumber = ChrW(&H91B)
+Case 7
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H93E) + ChrW(&H924)
+Case 8
+NepaliWordOfNumber = ChrW(&H906) + ChrW(&H920)
+Case 9
+NepaliWordOfNumber = ChrW(&H928) + ChrW(&H948) + ChrW(&H93E)
+Case 10
+NepaliWordOfNumber = ChrW(&H926) + ChrW(&H936)
+
+Case 11
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H918) + ChrW(&H93E) + ChrW(&H930)
+Case 12
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H93E) + ChrW(&H939) + ChrW(&H94D) + ChrW(&H930)
+Case 13
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H947) + ChrW(&H939) + ChrW(&H94D) + ChrW(&H930)
+Case 14
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H927)
+Case 15
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H927) + ChrW(&H94D) + ChrW(&H930)
+Case 16
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H94B) + ChrW(&H939) + ChrW(&H94D) + ChrW(&H930)
+Case 17
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H930)
+Case 18
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H93E) + ChrW(&H930)
+Case 19
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H93E) + ChrW(&H908) + ChrW(&H938)
+Case 20
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H940) + ChrW(&H938)
+
+Case 21
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H94D) + ChrW(&H915) + ChrW(&H93E) + ChrW(&H907) + ChrW(&H938)
+Case 22
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H93E) + ChrW(&H907) + ChrW(&H938)
+Case 23
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H947) + ChrW(&H907) + ChrW(&H938)
+Case 24
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H92C) + ChrW(&H93F) + ChrW(&H938)
+Case 25
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H91A) + ChrW(&H94D) + ChrW(&H91A) + ChrW(&H93F) + ChrW(&H938)
+Case 26
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H93F) + ChrW(&H938)
+Case 27
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93E) + ChrW(&H907) + ChrW(&H938)
+Case 28
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H93E) + ChrW(&H907) + ChrW(&H938)
+Case 29
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 30
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+
+Case 31
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 32
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 33
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H947) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 34
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 35
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H948) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 36
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 37
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H948) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 38
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H924) + ChrW(&H93F) + ChrW(&H938)
+Case 39
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 40
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+
+Case 41
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 42
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 43
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 44
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H935) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 45
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H948) + ChrW(&H924) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 46
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 47
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 48
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H932) + ChrW(&H93F) + ChrW(&H938)
+Case 49
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H938)
+Case 50
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H938)
+
+Case 51
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H93E) + ChrW(&H909) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 52
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H93E) + ChrW(&H909) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 53
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H92A) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 54
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H935) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 55
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H91A) + ChrW(&H92A) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 56
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92A) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 57
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93E) + ChrW(&H909) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 58
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H93E) + ChrW(&H909) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928)
+Case 59
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 60
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H93E) + ChrW(&H920) + ChrW(&H940)
+
+Case 61
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 62
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H92F) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 63
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 64
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 65
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H948) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 66
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92F) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 67
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 68
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H938) + ChrW(&H91F) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H940)
+Case 69
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H938) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930) + ChrW(&H940)
+Case 70
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930) + ChrW(&H940)
+
+Case 71
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 72
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 73
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 74
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 75
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H91A) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 76
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92F) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 77
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 78
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H939) + ChrW(&H924) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H930)
+Case 79
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 80
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H938) + ChrW(&H940)
+
+Case 81
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 82
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 83
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 84
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H930) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 85
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 86
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 87
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H924) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 88
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H920) + ChrW(&H93E) + ChrW(&H938) + ChrW(&H940)
+Case 89
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 90
+NepaliWordOfNumber = ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+
+Case 91
+NepaliWordOfNumber = ChrW(&H90F) + ChrW(&H915) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 92
+NepaliWordOfNumber = ChrW(&H92C) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 93
+NepaliWordOfNumber = ChrW(&H924) + ChrW(&H94D) + ChrW(&H930) + ChrW(&H93F) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 94
+NepaliWordOfNumber = ChrW(&H91A) + ChrW(&H94C) + ChrW(&H930) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 95
+NepaliWordOfNumber = ChrW(&H92A) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H91A) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 96
+NepaliWordOfNumber = ChrW(&H91B) + ChrW(&H92F) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 97
+NepaliWordOfNumber = ChrW(&H938) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H924) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 98
+NepaliWordOfNumber = ChrW(&H905) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H920) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H928) + ChrW(&H92C) + ChrW(&H94D) + ChrW(&H92C) + ChrW(&H947)
+Case 99
+NepaliWordOfNumber = ChrW(&H909) + ChrW(&H928) + ChrW(&H93E) + ChrW(&H928) + ChrW(&H94D) + ChrW(&H938) + ChrW(&H92F)
+'Case 100
+'NepaliWordOfNumber = ChrW(&H938) + ChrW(&H92F)
+
+Case Default
+NepaliWordOfNumber = ""
+
+End Select
+
+'NepwordDBFile.Close SaveChanges:=False
+'Application.ScreenUpdating = False
+
+End Function
+
+
+
+
